@@ -209,7 +209,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/calendar-multiple-check.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="DEVOLUCIONES"/>
+                <Property name="text" type="java.lang.String" value="DEVOLVER LIBRO"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
@@ -229,7 +229,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/file-chart.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="REPORTES"/>
+                <Property name="text" type="java.lang.String" value="PRESTAMOS ACTUALES"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
@@ -249,7 +249,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/calendar-plus.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="PR&#xc9;STAMOS"/>
+                <Property name="text" type="java.lang.String" value="NUEVO PRESTAMO"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>

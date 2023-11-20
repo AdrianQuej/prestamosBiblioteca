@@ -4,6 +4,14 @@
  */
 package com.ingsoftware.prestamosbiblioteca;
 
+import com.ingsoftware.interfaces.DAOclientes;
+import com.ingsoftware.interfaces.DAOlibros;
+import static com.ingsoftware.prestamosbiblioteca.vistaPrincipal.content;
+import java.awt.BorderLayout;
+import java.util.List;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Adrian Quej
@@ -15,8 +23,35 @@ public class verLibros extends javax.swing.JPanel {
      */
     public verLibros() {
         initComponents();
+        loadLibros();
     }
 
+    private void loadLibros(){
+        try{ 
+        
+            DAOlibros dao = new DAOlibrosImpl();
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            
+            List<com.ingsoftware.models.libros> lista = dao.listar("");
+            
+            dao.listar("").forEach((u) -> model.addRow(new Object[]{u.getLibroID(), u.getNombre_libro(), u.getAutor(), u.getISBN(), u.getAno(), u.getNum_copia()}));
+            
+            
+            
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    
+    }
+    private void mostrarPanel(JPanel p){
+        p.setSize(750, 430);
+        p.setLocation(0,0);
+        
+        content.removeAll();
+        content.add(p, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,15 +64,16 @@ public class verLibros extends javax.swing.JPanel {
         body = new javax.swing.JPanel();
         Title = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
-        bid = new javax.swing.JTextField();
+        ellibro = new javax.swing.JTextField();
         nuevo = new javax.swing.JPanel();
         edit = new javax.swing.JPanel();
         delete = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        buscarlibro = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        btneditar = new javax.swing.JButton();
 
         body.setBackground(new java.awt.Color(255, 255, 255));
         body.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -48,12 +84,12 @@ public class verLibros extends javax.swing.JPanel {
         jSeparator2.setForeground(new java.awt.Color(0, 153, 255));
         jSeparator2.setPreferredSize(new java.awt.Dimension(250, 10));
 
-        bid.setForeground(new java.awt.Color(102, 102, 102));
-        bid.setText("Ingrese el ID del Libro a buscar");
-        bid.setBorder(null);
-        bid.addMouseListener(new java.awt.event.MouseAdapter() {
+        ellibro.setForeground(new java.awt.Color(102, 102, 102));
+        ellibro.setText("Ingrese el ID del Libro a buscar");
+        ellibro.setBorder(null);
+        ellibro.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                bidMousePressed(evt);
+                ellibroMousePressed(evt);
             }
         });
 
@@ -105,23 +141,7 @@ public class verLibros extends javax.swing.JPanel {
         jTable1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "ID", "Nombre", "Autor", "ISBN", "Año", "Num_copia"
@@ -150,28 +170,47 @@ public class verLibros extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jButton1.setText("BUSCAR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        buscarlibro.setText("BUSCAR");
+        buscarlibro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                buscarlibroActionPerformed(evt);
             }
         });
 
         jButton2.setText("NUEVO LIBRO");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("BORRAR");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        btneditar.setText("EDITAR");
+        btneditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btneditarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(507, Short.MAX_VALUE)
+                .addContainerGap(429, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(buscarlibro, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btneditar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -185,7 +224,7 @@ public class verLibros extends javax.swing.JPanel {
                             .addGap(20, 20, 20)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(Title)
-                                .addComponent(bid, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(ellibro, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(layout.createSequentialGroup()
                             .addGap(20, 20, 20)
                             .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -203,11 +242,12 @@ public class verLibros extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(56, 56, 56)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buscarlibro, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 313, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
-                    .addComponent(jButton3)))
+                    .addComponent(jButton3)
+                    .addComponent(btneditar)))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -217,7 +257,7 @@ public class verLibros extends javax.swing.JPanel {
                         .addComponent(Title)
                         .addGroup(layout.createSequentialGroup()
                             .addGap(30, 30, 30)
-                            .addComponent(bid, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(ellibro, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(10, 10, 10)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -230,9 +270,9 @@ public class verLibros extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bidMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bidMousePressed
+    private void ellibroMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ellibroMousePressed
 
-    }//GEN-LAST:event_bidMousePressed
+    }//GEN-LAST:event_ellibroMousePressed
 
     private void nuevoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nuevoMouseEntered
         // TODO add your handling code here:
@@ -275,18 +315,68 @@ public class verLibros extends javax.swing.JPanel {
         
     }//GEN-LAST:event_jTable1MousePressed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void buscarlibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarlibroActionPerformed
+       try{ 
+            String librobuscar = ellibro.getText();         
+            DAOlibros dao = new DAOlibrosImpl();
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.setRowCount(0);
+            dao.listar(librobuscar).forEach((u) -> model.addRow(new Object[]{u.getLibroID(), u.getNombre_libro(), u.getAutor(), u.getISBN(), u.getAno(), u.getNum_copia()}));
+
+            
+            
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    }//GEN-LAST:event_buscarlibroActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        mostrarPanel(new nuevoLibro());
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        if (jTable1.getSelectedRows().length < 1){
+            javax.swing.JOptionPane.showMessageDialog(this, "Debe seleccionar uno o mas libros a eliminar \n", "AVISO", javax.swing.JOptionPane.ERROR_MESSAGE);
+  
+        } else{
+        DAOlibros dao = new DAOlibrosImpl();
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        for (int i: jTable1.getSelectedRows()) {
+            
+            try{ 
+            dao.eliminar((int)jTable1.getValueAt(i, 0));
+            model.removeRow(i);
+            } catch (Exception e){
+            System.out.println(e.getMessage());
+            }
+        }
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void btneditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneditarActionPerformed
+        if (jTable1.getSelectedRow() > -1) {
+            try{
+            int libroid = (int) jTable1.getValueAt(jTable1.getSelectedRow(),0);
+            DAOlibros dao = new DAOlibrosImpl();
+            mostrarPanel(new nuevoLibro(dao.getlibroporid(libroid)));
+            } catch (Exception e){
+            System.out.println(e.getMessage());
+            }
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "DEBE SELECCIONAR UN ELEMENTO \n", "AVISO", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_btneditarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Title;
-    private javax.swing.JTextField bid;
     private javax.swing.JPanel body;
+    private javax.swing.JButton btneditar;
+    private javax.swing.JButton buscarlibro;
     private javax.swing.JPanel delete;
     private javax.swing.JPanel edit;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTextField ellibro;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JScrollPane jScrollPane1;

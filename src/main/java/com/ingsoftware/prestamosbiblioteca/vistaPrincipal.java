@@ -154,7 +154,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
 
         btn_devoluciones.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         btn_devoluciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/calendar-multiple-check.png"))); // NOI18N
-        btn_devoluciones.setText("DEVOLUCIONES");
+        btn_devoluciones.setText("DEVOLVER LIBRO");
         btn_devoluciones.setBorder(null);
         btn_devoluciones.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_devoluciones.addActionListener(new java.awt.event.ActionListener() {
@@ -165,7 +165,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
 
         btn_reportes.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         btn_reportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/file-chart.png"))); // NOI18N
-        btn_reportes.setText("REPORTES");
+        btn_reportes.setText("PRESTAMOS ACTUALES");
         btn_reportes.setBorder(null);
         btn_reportes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_reportes.addActionListener(new java.awt.event.ActionListener() {
@@ -176,7 +176,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
 
         btn_prestamos.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         btn_prestamos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/calendar-plus.png"))); // NOI18N
-        btn_prestamos.setText("PRÉSTAMOS");
+        btn_prestamos.setText("NUEVO PRESTAMO");
         btn_prestamos.setBorder(null);
         btn_prestamos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_prestamos.addActionListener(new java.awt.event.ActionListener() {

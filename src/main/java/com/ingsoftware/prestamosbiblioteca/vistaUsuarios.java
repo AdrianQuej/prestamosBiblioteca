@@ -4,6 +4,14 @@
  */
 package com.ingsoftware.prestamosbiblioteca;
 
+import com.ingsoftware.interfaces.DAOclientes;
+import com.ingsoftware.models.clientes;
+import static com.ingsoftware.prestamosbiblioteca.vistaPrincipal.content;
+import java.awt.BorderLayout;
+import java.util.List;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Adrian Quej
@@ -15,6 +23,41 @@ public class vistaUsuarios extends javax.swing.JPanel {
      */
     public vistaUsuarios() {
         initComponents();
+        initStyles();
+        loadClientes();
+        
+    }
+    
+    private void initStyles(){
+        buscarcliente.putClientProperty("JTextField.placeholderText", "Ingrese el nombre de cliente a buscar");
+    }
+    
+    private void loadClientes(){
+        try{ 
+        
+            DAOclientes dao = new DAOclientesImpl();
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            
+            List<com.ingsoftware.models.clientes> lista = dao.listar("");
+            
+            dao.listar("").forEach((u) -> model.addRow(new Object[]{u.getClientesID(), u.getNombre(), u.getDireccion(), u.getTelefono()}));
+            
+            
+            
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    
+    }
+    
+    private void mostrarPanel(JPanel p){
+        p.setSize(750, 430);
+        p.setLocation(0,0);
+        
+        content.removeAll();
+        content.add(p, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
     }
 
     /**
@@ -29,33 +72,38 @@ public class vistaUsuarios extends javax.swing.JPanel {
         body = new javax.swing.JPanel();
         Title = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
-        usrnm = new javax.swing.JTextField();
+        buscarcliente = new javax.swing.JTextField();
         edit = new javax.swing.JPanel();
         nuevo = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        buscar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        botonborrar = new javax.swing.JButton();
+        btneditar = new javax.swing.JButton();
 
         body.setBackground(new java.awt.Color(255, 255, 255));
         body.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Title.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        Title.setText("Usuarios");
+        Title.setText("CLIENTES");
 
         jSeparator2.setForeground(new java.awt.Color(0, 153, 255));
         jSeparator2.setPreferredSize(new java.awt.Dimension(250, 10));
 
-        usrnm.setForeground(new java.awt.Color(102, 102, 102));
-        usrnm.setText("Ingrese el nombre de usuario a buscar");
-        usrnm.setBorder(null);
-        usrnm.addMouseListener(new java.awt.event.MouseAdapter() {
+        buscarcliente.setForeground(new java.awt.Color(102, 102, 102));
+        buscarcliente.setBorder(null);
+        buscarcliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                usrnmMousePressed(evt);
+                buscarclienteMousePressed(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                usrnmMouseReleased(evt);
+                buscarclienteMouseReleased(evt);
+            }
+        });
+        buscarcliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarclienteActionPerformed(evt);
             }
         });
 
@@ -92,23 +140,7 @@ public class vistaUsuarios extends javax.swing.JPanel {
         jTable1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "ID", "Nombre", "Domicilio", "Teléfono"
@@ -137,28 +169,53 @@ public class vistaUsuarios extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jButton1.setText("BUSCAR");
+        buscar.setText("BUSCAR");
+        buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("NUEVO USUARIO");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("BORRAR");
+        botonborrar.setText("BORRAR");
+        botonborrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonborrarActionPerformed(evt);
+            }
+        });
+
+        btneditar.setText("EDITAR");
+        btneditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btneditarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(usrnm, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(buscarcliente, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(78, 78, 78)
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btneditar, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(botonborrar, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(20, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(78, 78, 78)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -183,12 +240,14 @@ public class vistaUsuarios extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(usrnm, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 317, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(buscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buscarcliente, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
+                .addGap(317, 317, 317)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botonborrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton2)
+                        .addComponent(btneditar)))
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -208,13 +267,13 @@ public class vistaUsuarios extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void usrnmMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usrnmMousePressed
+    private void buscarclienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarclienteMousePressed
      
-    }//GEN-LAST:event_usrnmMousePressed
+    }//GEN-LAST:event_buscarclienteMousePressed
 
-    private void usrnmMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usrnmMouseReleased
+    private void buscarclienteMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarclienteMouseReleased
         //nothing
-    }//GEN-LAST:event_usrnmMouseReleased
+    }//GEN-LAST:event_buscarclienteMouseReleased
 
     private void editMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editMouseEntered
         // TODO add your handling code here:
@@ -244,18 +303,77 @@ public class vistaUsuarios extends javax.swing.JPanel {
 
     }//GEN-LAST:event_jTable1MousePressed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        mostrarPanel(new nuevoUsuario());
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void buscarclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarclienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buscarclienteActionPerformed
+
+    private void botonborrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonborrarActionPerformed
+        if (jTable1.getSelectedRows().length < 1){
+            javax.swing.JOptionPane.showMessageDialog(this, "Debe seleccionar uno o mas clientes a eliminar \n", "AVISO", javax.swing.JOptionPane.ERROR_MESSAGE);
+  
+        } else{
+        DAOclientes dao = new DAOclientesImpl();
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        for (int i: jTable1.getSelectedRows()) {
+            
+            try{ 
+            dao.eliminar((int)jTable1.getValueAt(i, 0));
+            model.removeRow(i);
+            } catch (Exception e){
+            System.out.println(e.getMessage());
+            }
+        }
+        }
+    }//GEN-LAST:event_botonborrarActionPerformed
+
+    private void btneditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneditarActionPerformed
+        
+        if (jTable1.getSelectedRow() > -1) {
+            try{
+            int clienteid = (int) jTable1.getValueAt(jTable1.getSelectedRow(),0);
+            DAOclientes dao = new DAOclientesImpl();
+            mostrarPanel(new nuevoUsuario(dao.getclienteporid(clienteid)));
+            } catch (Exception e){
+            System.out.println(e.getMessage());
+            }
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "DEBE SELECCIONAR UN ELEMENTO \n", "AVISO", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_btneditarActionPerformed
+
+    private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
+        try{ 
+            String clientebuscar = buscarcliente.getText();         
+            DAOclientes dao = new DAOclientesImpl();
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.setRowCount(0);
+            dao.listar(clientebuscar).forEach((u) -> model.addRow(new Object[]{u.getClientesID(), u.getNombre(), u.getDireccion(), u.getTelefono()}));
+            
+            
+            
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    }//GEN-LAST:event_buscarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Title;
     private javax.swing.JPanel body;
+    private javax.swing.JButton botonborrar;
+    private javax.swing.JButton btneditar;
+    private javax.swing.JButton buscar;
+    private javax.swing.JTextField buscarcliente;
     private javax.swing.JPanel edit;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTable jTable1;
     private javax.swing.JPanel nuevo;
-    private javax.swing.JTextField usrnm;
     // End of variables declaration//GEN-END:variables
 }

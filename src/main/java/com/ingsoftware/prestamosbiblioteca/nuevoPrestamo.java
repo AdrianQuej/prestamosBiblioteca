@@ -4,6 +4,10 @@
  */
 package com.ingsoftware.prestamosbiblioteca;
 
+import com.ingsoftware.interfaces.DAObibliotecarios;
+import com.ingsoftware.interfaces.DAOprestamo;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Adrian Quej
@@ -88,6 +92,11 @@ public class nuevoPrestamo extends javax.swing.JPanel {
         txt_tipoPrestamo.setText("TIPO PRESTAMO:");
 
         btn_nuevoprestamo.setText("Añadir Prestamo");
+        btn_nuevoprestamo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_nuevoprestamoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -169,6 +178,45 @@ public class nuevoPrestamo extends javax.swing.JPanel {
             jTB_tipoprestamo.setText("EN BIBLIOTECA");
         }
     }//GEN-LAST:event_jTB_tipoprestamoActionPerformed
+
+    private void btn_nuevoprestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nuevoprestamoActionPerformed
+
+        int libroid = Integer.parseInt(jt_foliolibro.getText());
+        int bibliotecarioid = Integer.parseInt(jt_foliobibliotecario.getText());
+        int clienteid = Integer.parseInt(jt_foliousuario.getText());
+        String fechaprestamo = jt_fechaprestamo.getText();
+        String fechadevolucion = jt_fechadevolucion.getText();
+        
+        String tipoprestamo ="";
+        
+        if(jTB_tipoprestamo.isSelected()){
+            tipoprestamo = "DOMICILIO";
+        } else {
+            tipoprestamo = "EN BIBLIOTECA";
+        }
+        
+        com.ingsoftware.models.prestamo pre = new com.ingsoftware.models.prestamo();
+        pre.setLibroID(libroid);
+        pre.setBibliotecarioID(bibliotecarioid);
+        pre.setClienteID(clienteid);
+        pre.setFecha_prestamo(fechaprestamo);
+        pre.setFecha_devolucion(fechadevolucion);
+        pre.setTipo_prestamo(tipoprestamo);
+        
+        try {
+            DAOprestamo dao = new DAOprestamoImpl();
+            dao.registrar(pre);
+            JOptionPane.showMessageDialog(null, "Bibliotecario agregado con exito");
+            jt_foliolibro.setText("");
+            jt_foliobibliotecario.setText("");
+            jt_foliousuario.setText("");
+            jt_fechaprestamo.setText("");
+            jt_fechadevolucion.setText("");
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Hubo un error al añadir el bibliotecario");
+            System.out.println(e.getMessage());
+        }
+    }//GEN-LAST:event_btn_nuevoprestamoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

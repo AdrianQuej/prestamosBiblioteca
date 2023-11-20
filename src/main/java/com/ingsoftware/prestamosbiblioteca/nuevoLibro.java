@@ -4,6 +4,11 @@
  */
 package com.ingsoftware.prestamosbiblioteca;
 
+import com.ingsoftware.interfaces.DAOclientes;
+import com.ingsoftware.interfaces.DAOlibros;
+import com.ingsoftware.models.libros;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Adrian Quej
@@ -13,9 +18,35 @@ public class nuevoLibro extends javax.swing.JPanel {
     /**
      * Creates new form nuevoLibro
      */
+    boolean isEdition = false;
+    libros libroEdit;
     public nuevoLibro() {
         initComponents();
+        isEdition=false;
+        initStyles();
     }
+    
+     public nuevoLibro(libros lib){
+        initComponents();
+        libroEdit= lib;
+        isEdition = true;
+        initStyles();
+    }
+    
+     public void  initStyles(){
+        if (isEdition) {
+            Title.setText("EDITAR UN LIBRO");
+            jButton1.setText("EDITAR");
+            if (libroEdit != null) {
+                elnombre.setText(libroEdit.getNombre_libro());
+                elautor.setText(libroEdit.getAutor());
+                elISBN.setText(libroEdit.getISBN());
+                elano.setText(""+libroEdit.getAno());
+                elnumcopia.setText(""+libroEdit.getNum_copia());                
+            }
+        }
+    }
+     
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -29,20 +60,17 @@ public class nuevoLibro extends javax.swing.JPanel {
         body = new javax.swing.JPanel();
         Title = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
-        Text3 = new javax.swing.JLabel();
-        id = new javax.swing.JTextField();
-        jSeparator4 = new javax.swing.JSeparator();
         Text6 = new javax.swing.JLabel();
-        title = new javax.swing.JTextField();
+        elnombre = new javax.swing.JTextField();
         jSeparator7 = new javax.swing.JSeparator();
         Text7 = new javax.swing.JLabel();
-        date = new javax.swing.JTextField();
+        elano = new javax.swing.JTextField();
         jSeparator8 = new javax.swing.JSeparator();
         Text8 = new javax.swing.JLabel();
-        author = new javax.swing.JTextField();
+        elautor = new javax.swing.JTextField();
         Text9 = new javax.swing.JLabel();
-        category = new javax.swing.JTextField();
-        edit = new javax.swing.JTextField();
+        elISBN = new javax.swing.JTextField();
+        elnumcopia = new javax.swing.JTextField();
         Text10 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
@@ -56,40 +84,20 @@ public class nuevoLibro extends javax.swing.JPanel {
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator3.setPreferredSize(new java.awt.Dimension(200, 10));
 
-        Text3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Text3.setText("Libro ID");
-
-        id.setForeground(new java.awt.Color(102, 102, 102));
-        id.setText("Ingrese el ID del Libro");
-        id.setBorder(null);
-        id.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                idMousePressed(evt);
-            }
-        });
-        id.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                idActionPerformed(evt);
-            }
-        });
-
-        jSeparator4.setForeground(new java.awt.Color(0, 153, 255));
-        jSeparator4.setPreferredSize(new java.awt.Dimension(200, 10));
-
         Text6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Text6.setText("Nombre");
 
-        title.setForeground(new java.awt.Color(102, 102, 102));
-        title.setText("Ingrese el Título");
-        title.setBorder(null);
-        title.addMouseListener(new java.awt.event.MouseAdapter() {
+        elnombre.setForeground(new java.awt.Color(102, 102, 102));
+        elnombre.setText("Ingrese el Título");
+        elnombre.setBorder(null);
+        elnombre.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                titleMousePressed(evt);
+                elnombreMousePressed(evt);
             }
         });
-        title.addActionListener(new java.awt.event.ActionListener() {
+        elnombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                titleActionPerformed(evt);
+                elnombreActionPerformed(evt);
             }
         });
 
@@ -99,17 +107,17 @@ public class nuevoLibro extends javax.swing.JPanel {
         Text7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Text7.setText("Año");
 
-        date.setForeground(new java.awt.Color(102, 102, 102));
-        date.setText("Ingrese la Fecha de Publicación");
-        date.setBorder(null);
-        date.addMouseListener(new java.awt.event.MouseAdapter() {
+        elano.setForeground(new java.awt.Color(102, 102, 102));
+        elano.setText("Ingrese la Fecha de Publicación");
+        elano.setBorder(null);
+        elano.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                dateMousePressed(evt);
+                elanoMousePressed(evt);
             }
         });
-        date.addActionListener(new java.awt.event.ActionListener() {
+        elano.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dateActionPerformed(evt);
+                elanoActionPerformed(evt);
             }
         });
 
@@ -119,48 +127,48 @@ public class nuevoLibro extends javax.swing.JPanel {
         Text8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Text8.setText("Autor");
 
-        author.setForeground(new java.awt.Color(102, 102, 102));
-        author.setText("Ingrese el nombre del Autor/es");
-        author.setBorder(null);
-        author.addMouseListener(new java.awt.event.MouseAdapter() {
+        elautor.setForeground(new java.awt.Color(102, 102, 102));
+        elautor.setText("Ingrese el nombre del Autor/es");
+        elautor.setBorder(null);
+        elautor.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                authorMousePressed(evt);
+                elautorMousePressed(evt);
             }
         });
-        author.addActionListener(new java.awt.event.ActionListener() {
+        elautor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                authorActionPerformed(evt);
+                elautorActionPerformed(evt);
             }
         });
 
         Text9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Text9.setText("ISBN");
 
-        category.setForeground(new java.awt.Color(102, 102, 102));
-        category.setText("Ingrese la Categoría del Libro");
-        category.setBorder(null);
-        category.addMouseListener(new java.awt.event.MouseAdapter() {
+        elISBN.setForeground(new java.awt.Color(102, 102, 102));
+        elISBN.setText("Ingrese la Categoría del Libro");
+        elISBN.setBorder(null);
+        elISBN.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                categoryMousePressed(evt);
+                elISBNMousePressed(evt);
             }
         });
-        category.addActionListener(new java.awt.event.ActionListener() {
+        elISBN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                categoryActionPerformed(evt);
+                elISBNActionPerformed(evt);
             }
         });
 
-        edit.setForeground(new java.awt.Color(102, 102, 102));
-        edit.setText("Ingrese la edición");
-        edit.setBorder(null);
-        edit.addMouseListener(new java.awt.event.MouseAdapter() {
+        elnumcopia.setForeground(new java.awt.Color(102, 102, 102));
+        elnumcopia.setText("Ingrese la edición");
+        elnumcopia.setBorder(null);
+        elnumcopia.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                editMousePressed(evt);
+                elnumcopiaMousePressed(evt);
             }
         });
-        edit.addActionListener(new java.awt.event.ActionListener() {
+        elnumcopia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editActionPerformed(evt);
+                elnumcopiaActionPerformed(evt);
             }
         });
 
@@ -181,20 +189,18 @@ public class nuevoLibro extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Text3)
-                    .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Text6)
-                    .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(elnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Text7)
-                    .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(elano, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 205, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Text8)
-                    .addComponent(author, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(elautor, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Text9)
-                    .addComponent(category, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(elISBN, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Text10)
-                    .addComponent(edit, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(elnumcopia, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(107, 107, 107))
             .addGroup(layout.createSequentialGroup()
                 .addGap(271, 271, 271)
@@ -212,7 +218,6 @@ public class nuevoLibro extends javax.swing.JPanel {
                         .addGroup(layout.createSequentialGroup()
                             .addGap(30, 30, 30)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(80, 80, 80)
@@ -229,27 +234,24 @@ public class nuevoLibro extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(Text8)
                         .addGap(0, 0, 0)
-                        .addComponent(author, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(elautor, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20)
                         .addComponent(Text9)
                         .addGap(0, 0, 0)
-                        .addComponent(category, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(elISBN, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20)
                         .addComponent(Text10)
                         .addGap(0, 0, 0)
-                        .addComponent(edit, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(elnumcopia, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(Text3)
-                        .addGap(0, 0, 0)
-                        .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
+                        .addGap(60, 60, 60)
                         .addComponent(Text6)
                         .addGap(0, 0, 0)
-                        .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(elnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10)
                         .addComponent(Text7)
                         .addGap(0, 0, 0)
-                        .addComponent(date, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(elano, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(48, 48, 48)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(47, Short.MAX_VALUE))
@@ -259,9 +261,7 @@ public class nuevoLibro extends javax.swing.JPanel {
                     .addComponent(body, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(90, 90, 90)
-                            .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(50, 50, 50)
+                            .addGap(150, 150, 150)
                             .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(50, 50, 50)
                             .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -272,78 +272,112 @@ public class nuevoLibro extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void idMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_idMousePressed
-        
-    }//GEN-LAST:event_idMousePressed
+    private void elnombreMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_elnombreMousePressed
+        elnombre.setText("");
+    }//GEN-LAST:event_elnombreMousePressed
 
-    private void idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_idActionPerformed
+    private void elnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elnombreActionPerformed
+        jButton1.doClick();
+    }//GEN-LAST:event_elnombreActionPerformed
 
-    private void titleMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_titleMousePressed
-        
-    }//GEN-LAST:event_titleMousePressed
+    private void elanoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_elanoMousePressed
+        elano.setText("");
+    }//GEN-LAST:event_elanoMousePressed
 
-    private void titleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_titleActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_titleActionPerformed
+    private void elanoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elanoActionPerformed
+        jButton1.doClick();
+    }//GEN-LAST:event_elanoActionPerformed
 
-    private void dateMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dateMousePressed
-        
-    }//GEN-LAST:event_dateMousePressed
+    private void elautorMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_elautorMousePressed
+        elautor.setText("");
+    }//GEN-LAST:event_elautorMousePressed
 
-    private void dateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_dateActionPerformed
+    private void elautorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elautorActionPerformed
+        jButton1.doClick();
+    }//GEN-LAST:event_elautorActionPerformed
 
-    private void authorMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_authorMousePressed
-        
-    }//GEN-LAST:event_authorMousePressed
+    private void elISBNMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_elISBNMousePressed
+        elISBN.setText("");
+    }//GEN-LAST:event_elISBNMousePressed
 
-    private void authorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_authorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_authorActionPerformed
+    private void elISBNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elISBNActionPerformed
+        jButton1.doClick();
+    }//GEN-LAST:event_elISBNActionPerformed
 
-    private void categoryMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_categoryMousePressed
-        
-    }//GEN-LAST:event_categoryMousePressed
+    private void elnumcopiaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_elnumcopiaMousePressed
+        elnumcopia.setText("");
+    }//GEN-LAST:event_elnumcopiaMousePressed
 
-    private void categoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoryActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_categoryActionPerformed
-
-    private void editMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editMousePressed
-        
-    }//GEN-LAST:event_editMousePressed
-
-    private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_editActionPerformed
+    private void elnumcopiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elnumcopiaActionPerformed
+        jButton1.doClick();
+    }//GEN-LAST:event_elnumcopiaActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        String nombre = elnombre.getText();
+        String autor = elautor.getText();
+        String isbn = elISBN.getText();
+        int ano = Integer.parseInt(elano.getText());
+        int copia = Integer.parseInt(elnumcopia.getText());
+        
+        //VALIDACIONES    
+        if(elnombre.getText().equals("Ingrese el Título del libro") || elautor.getText().equals("Ingrese el nombre del Autor/es")
+            || elISBN.getText().equals("Ingrese el ISBN del libro") ){
+            javax.swing.JOptionPane.showMessageDialog(this, "Debe llenar todos los campos \n", "AVISO", javax.swing.JOptionPane.ERROR_MESSAGE);
+            elnombre.requestFocus();
+            return;
+        }
+        
+        
+        com.ingsoftware.models.libros lib = isEdition ?  libroEdit: new com.ingsoftware.models.libros();
+        lib.setNombre_libro(nombre);
+        lib.setAutor(autor);
+        lib.setISBN(isbn);
+        lib.setAno(ano);
+        lib.setNum_copia(copia);
+        
+        try {
+            DAOlibros dao = new DAOlibrosImpl();
+            if(!isEdition){
+            dao.registrar(lib);
+            } else {
+            dao.modificar(lib);
+            }
+            
+            String sepudo = isEdition ? "modificado" : "registrado";
+            
+            JOptionPane.showMessageDialog(null, "Libro " +sepudo+ " con exito");
+            
+            if(!isEdition){
+            elnombre.setText("");
+            elautor.setText("");
+            elISBN.setText("");
+            elano.setText("");
+            elnumcopia.setText("");
+            }
+        } catch (Exception e){
+             String nosepudo = isEdition ? "modificar" : "registrar";
+            JOptionPane.showMessageDialog(null, "Hubo un error al "+ nosepudo+ " el libro");
+            System.out.println(e.getMessage());
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Text10;
-    private javax.swing.JLabel Text3;
     private javax.swing.JLabel Text6;
     private javax.swing.JLabel Text7;
     private javax.swing.JLabel Text8;
     private javax.swing.JLabel Text9;
     private javax.swing.JLabel Title;
-    private javax.swing.JTextField author;
     private javax.swing.JPanel body;
-    private javax.swing.JTextField category;
-    private javax.swing.JTextField date;
-    private javax.swing.JTextField edit;
-    private javax.swing.JTextField id;
+    private javax.swing.JTextField elISBN;
+    private javax.swing.JTextField elano;
+    private javax.swing.JTextField elautor;
+    private javax.swing.JTextField elnombre;
+    private javax.swing.JTextField elnumcopia;
     private javax.swing.JButton jButton1;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
-    private javax.swing.JTextField title;
     // End of variables declaration//GEN-END:variables
 }

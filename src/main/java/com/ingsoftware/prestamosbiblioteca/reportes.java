@@ -4,6 +4,14 @@
  */
 package com.ingsoftware.prestamosbiblioteca;
 
+import com.ingsoftware.interfaces.DAOlibros;
+import com.ingsoftware.interfaces.DAOprestamo;
+import static com.ingsoftware.prestamosbiblioteca.vistaPrincipal.content;
+import java.awt.BorderLayout;
+import java.util.List;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Adrian Quej
@@ -15,8 +23,37 @@ public class reportes extends javax.swing.JPanel {
      */
     public reportes() {
         initComponents();
+        loadPrestamos();
     }
 
+    private void loadPrestamos(){
+        try{ 
+        
+            DAOprestamo dao = new DAOprestamoImpl();
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            
+            List<com.ingsoftware.models.prestamo> lista = dao.listar(-1);
+            
+            dao.listar(-1).forEach((u) -> model.addRow(new Object[]{u.getPrestamoID(), u.getLibroID(), u.getBibliotecarioID(), u.getClienteID(), u.getFecha_prestamo(), u.getFecha_devolucion(), u.getTipo_prestamo(), u.getEstadoPrestamo()}));
+            
+            
+            
+            
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    
+    }
+    
+    private void mostrarPanel(JPanel p){
+        p.setSize(750, 430);
+        p.setLocation(0,0);
+        
+        content.removeAll();
+        content.add(p, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -54,43 +91,18 @@ public class reportes extends javax.swing.JPanel {
         jTable1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Usuario ID", "Libro ID", "Fecha de Salida", "Fecha de Entrega"
+                "prestamoID", "libroID", "bibliotecarioID", "clienteID", "fecha_prestamo", "fecha_devolucion", "tipo de prestamo", "Estado prestamo"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
             }
         });
         jTable1.getTableHeader().setReorderingAllowed(false);
@@ -107,6 +119,11 @@ public class reportes extends javax.swing.JPanel {
         Title.setText("Reportes");
 
         jButton1.setText("ACTUALIZAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -164,6 +181,10 @@ public class reportes extends javax.swing.JPanel {
     private void jTable1InputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jTable1InputMethodTextChanged
         //nothing
     }//GEN-LAST:event_jTable1InputMethodTextChanged
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        mostrarPanel(new reportes());
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

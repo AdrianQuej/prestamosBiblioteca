@@ -194,6 +194,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="A&#xf1;adir Prestamo"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_nuevoprestamoActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

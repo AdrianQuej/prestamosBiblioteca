@@ -5,48 +5,21 @@
 package com.ingsoftware.prestamosbiblioteca;
 
 import com.ingsoftware.interfaces.DAObibliotecarios;
-import com.ingsoftware.interfaces.DAOclientes;
-import com.ingsoftware.models.clientes;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author Adrian Quej
  */
-public class nuevoUsuario extends javax.swing.JPanel {
+public class nuevoBibliotecario extends javax.swing.JPanel {
 
     /**
      * Creates new form nuevoUsuario
      */
-    boolean isEdition = false;
-    clientes clienteEdit;
-    
-    public nuevoUsuario() {
+    public nuevoBibliotecario() {
         initComponents();
-        isEdition=false;
-        initStyles();
     }
 
-    public nuevoUsuario(clientes cli){
-        initComponents();
-        clienteEdit= cli;
-        isEdition = true;
-        initStyles();
-    }
-    
-    public void  initStyles(){
-        if (isEdition) {
-            Title.setText("EDITAR UN USUARIO");
-            jButton1.setText("EDITAR");
-            if (clienteEdit != null) {
-                elnombre.setText(clienteEdit.getNombre());
-                eldomicilio.setText(clienteEdit.getDireccion());
-                eltelefono.setText(clienteEdit.getTelefono());
-                
-            }
-        }
-    }
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -63,24 +36,24 @@ public class nuevoUsuario extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
-        eltelefono = new javax.swing.JTextField();
-        eldomicilio = new javax.swing.JTextField();
+        nombretxt = new javax.swing.JTextField();
         Text3 = new javax.swing.JLabel();
-        elnombre = new javax.swing.JTextField();
+        name = new javax.swing.JTextField();
         jSeparator4 = new javax.swing.JSeparator();
         jButton1 = new javax.swing.JButton();
+        lacontrasena = new javax.swing.JPasswordField();
 
         body.setBackground(new java.awt.Color(255, 255, 255));
         body.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Title.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        Title.setText("Registrar nuevo Usuario");
+        Title.setText("Registrar nuevo Bibliotecario");
 
         Text1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Text1.setText("Teléfono");
+        Text1.setText("Contraseña");
 
         Text2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Text2.setText("Domicilio");
+        Text2.setText("Nombre");
 
         jSeparator1.setForeground(new java.awt.Color(0, 153, 255));
         jSeparator1.setPreferredSize(new java.awt.Dimension(200, 10));
@@ -92,48 +65,34 @@ public class nuevoUsuario extends javax.swing.JPanel {
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator3.setPreferredSize(new java.awt.Dimension(200, 10));
 
-        eltelefono.setForeground(new java.awt.Color(102, 102, 102));
-        eltelefono.setText("Ingrese un número telefónico");
-        eltelefono.setBorder(null);
-        eltelefono.addMouseListener(new java.awt.event.MouseAdapter() {
+        nombretxt.setForeground(new java.awt.Color(102, 102, 102));
+        nombretxt.setText("Ingrese el nombre completo");
+        nombretxt.setBorder(null);
+        nombretxt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                eltelefonoMousePressed(evt);
+                nombretxtMousePressed(evt);
             }
         });
-        eltelefono.addActionListener(new java.awt.event.ActionListener() {
+        nombretxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                eltelefonoActionPerformed(evt);
-            }
-        });
-
-        eldomicilio.setForeground(new java.awt.Color(102, 102, 102));
-        eldomicilio.setText("Ingrese el domicilio");
-        eldomicilio.setBorder(null);
-        eldomicilio.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                eldomicilioMousePressed(evt);
-            }
-        });
-        eldomicilio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                eldomicilioActionPerformed(evt);
+                nombretxtActionPerformed(evt);
             }
         });
 
         Text3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Text3.setText("Nombre");
+        Text3.setText("Usuario");
 
-        elnombre.setForeground(new java.awt.Color(102, 102, 102));
-        elnombre.setText("Ingrese el nombre");
-        elnombre.setBorder(null);
-        elnombre.addMouseListener(new java.awt.event.MouseAdapter() {
+        name.setForeground(new java.awt.Color(102, 102, 102));
+        name.setText("Ingrese un nombre de usuario");
+        name.setBorder(null);
+        name.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                elnombreMousePressed(evt);
+                nameMousePressed(evt);
             }
         });
-        elnombre.addActionListener(new java.awt.event.ActionListener() {
+        name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                elnombreActionPerformed(evt);
+                nameActionPerformed(evt);
             }
         });
 
@@ -144,6 +103,13 @@ public class nuevoUsuario extends javax.swing.JPanel {
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        lacontrasena.setText("jPasswordField1");
+        lacontrasena.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lacontrasenaActionPerformed(evt);
             }
         });
 
@@ -161,13 +127,13 @@ public class nuevoUsuario extends javax.swing.JPanel {
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(23, 23, 23)
                                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(eldomicilio, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(nombretxt, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 118, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(Text1)
-                                    .addComponent(eltelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lacontrasena)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(Title)
@@ -175,7 +141,7 @@ public class nuevoUsuario extends javax.swing.JPanel {
                         .addGap(40, 40, 40))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(Text2)
-                        .addContainerGap(645, Short.MAX_VALUE))))
+                        .addContainerGap(651, Short.MAX_VALUE))))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -185,7 +151,7 @@ public class nuevoUsuario extends javax.swing.JPanel {
                             .addGap(30, 30, 30)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(Text3)
-                                .addComponent(elnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(80, 80, 80)
                             .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -196,16 +162,16 @@ public class nuevoUsuario extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(Title)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addComponent(Text1)
-                .addGap(10, 10, 10)
-                .addComponent(eltelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
+                .addGap(4, 4, 4)
+                .addComponent(lacontrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(Text2)
-                .addGap(16, 16, 16)
-                .addComponent(eldomicilio, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49)
+                .addComponent(Text2, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(nombretxt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
@@ -220,7 +186,7 @@ public class nuevoUsuario extends javax.swing.JPanel {
                             .addGap(60, 60, 60)
                             .addComponent(Text3)
                             .addGap(10, 10, 10)
-                            .addComponent(elnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(0, 0, 0)
                             .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
@@ -230,73 +196,61 @@ public class nuevoUsuario extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void eltelefonoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eltelefonoMousePressed
-        eltelefono.setText("");
-    }//GEN-LAST:event_eltelefonoMousePressed
+    private void nombretxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombretxtMousePressed
+        nombretxt.setText("");
+    }//GEN-LAST:event_nombretxtMousePressed
 
-    private void eltelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eltelefonoActionPerformed
+    private void nombretxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombretxtActionPerformed
         jButton1.doClick();
-    }//GEN-LAST:event_eltelefonoActionPerformed
+    }//GEN-LAST:event_nombretxtActionPerformed
 
-    private void eldomicilioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eldomicilioMousePressed
-        eldomicilio.setText("");
-    }//GEN-LAST:event_eldomicilioMousePressed
+    private void nameMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nameMousePressed
+        name.setText("");
+    }//GEN-LAST:event_nameMousePressed
 
-    private void eldomicilioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eldomicilioActionPerformed
+    private void nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameActionPerformed
         jButton1.doClick();
-    }//GEN-LAST:event_eldomicilioActionPerformed
-
-    private void elnombreMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_elnombreMousePressed
-        elnombre.setText("");
-    }//GEN-LAST:event_elnombreMousePressed
-
-    private void elnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elnombreActionPerformed
-        jButton1.doClick();
-    }//GEN-LAST:event_elnombreActionPerformed
+    }//GEN-LAST:event_nameActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String nombre = elnombre.getText();
-        String telefono = eltelefono.getText();
-        String domicilio = eldomicilio.getText();
+        String usuario = name.getText();
+        String contrasena = lacontrasena.getText();
+        String nombre = nombretxt.getText();
         
         //VALIDACIONES    
-        if(elnombre.getText().equals("Ingrese el nombre") || eltelefono.getText().equals("Ingrese un número telefónico")
-            || eldomicilio.getText().equals("Ingrese el domicilio") ){
+        if(name.getText().equals("Ingrese un nombre de usuario") || lacontrasena.getText().equals("")
+            || nombretxt.getText().equals("Ingrese el nombre completo") ){
             javax.swing.JOptionPane.showMessageDialog(this, "Debe llenar todos los campos \n", "AVISO", javax.swing.JOptionPane.ERROR_MESSAGE);
-            elnombre.requestFocus();
+            name.requestFocus();
             return;
         }
         
         
-        com.ingsoftware.models.clientes cli = isEdition ?  clienteEdit: new com.ingsoftware.models.clientes();
-        cli.setNombre(nombre);
-        cli.setTelefono(telefono);
-        cli.setDireccion(domicilio);
+        com.ingsoftware.models.bibliotecarios bib = new com.ingsoftware.models.bibliotecarios();
+        bib.setUsuario(usuario);
+        bib.setContrasena(contrasena);
+        bib.setNombre(nombre);
         
         try {
-            DAOclientes dao = new DAOclientesImpl();
-            if(!isEdition){
-            dao.registrar(cli);
-            } else {
-            dao.modificar(cli);
-            }
-            
-            String sepudo = isEdition ? "modificado" : "registrado";
-            
-            JOptionPane.showMessageDialog(null, "Cliente " +sepudo+ " con exito");
-            
-            if(!isEdition){
-            elnombre.setText("");
-            eltelefono.setText("");
-            eldomicilio.setText("");
-            }
+            DAObibliotecarios dao = new DAObibliotecariosImpl();
+            dao.registrar(bib);
+            JOptionPane.showMessageDialog(null, "Bibliotecario agregado con exito");
+            name.setText("");
+            lacontrasena.setText("");
+            nombretxt.setText("");
         } catch (Exception e){
-             String nosepudo = isEdition ? "modificar" : "registrar";
-            JOptionPane.showMessageDialog(null, "Hubo un error al "+ nosepudo+ " el cliente");
+            JOptionPane.showMessageDialog(null, "Hubo un error al añadir el bibliotecario");
             System.out.println(e.getMessage());
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void lacontrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lacontrasenaActionPerformed
+        jButton1.doClick();
+    }//GEN-LAST:event_lacontrasenaActionPerformed
+
+    private void lacontrasenaMousePressed(java.awt.event.MouseEvent evt) {                                    
+        lacontrasena.setText("");
+    }    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Text1;
@@ -304,13 +258,13 @@ public class nuevoUsuario extends javax.swing.JPanel {
     private javax.swing.JLabel Text3;
     private javax.swing.JLabel Title;
     private javax.swing.JPanel body;
-    private javax.swing.JTextField eldomicilio;
-    private javax.swing.JTextField elnombre;
-    private javax.swing.JTextField eltelefono;
     private javax.swing.JButton jButton1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JPasswordField lacontrasena;
+    private javax.swing.JTextField name;
+    private javax.swing.JTextField nombretxt;
     // End of variables declaration//GEN-END:variables
 }
