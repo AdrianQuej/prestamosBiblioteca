@@ -35,10 +35,7 @@ public class reportes extends javax.swing.JPanel {
             List<com.ingsoftware.models.prestamo> lista = dao.listar(-1);
             
             dao.listar(-1).forEach((u) -> model.addRow(new Object[]{u.getPrestamoID(), u.getLibroID(), u.getBibliotecarioID(), u.getClienteID(), u.getFecha_prestamo(), u.getFecha_devolucion(), u.getTipo_prestamo(), u.getEstadoPrestamo()}));
-            
-            
-            
-            
+         
         } catch (Exception e){
             System.out.println(e.getMessage());
         }
@@ -69,6 +66,8 @@ public class reportes extends javax.swing.JPanel {
         jTable1 = new javax.swing.JTable();
         Title = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(0, 102, 102));
 
         button.setBackground(new java.awt.Color(18, 90, 173));
         button.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));

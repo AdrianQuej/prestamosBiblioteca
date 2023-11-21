@@ -6,6 +6,9 @@ package com.ingsoftware.prestamosbiblioteca;
 
 import com.ingsoftware.interfaces.DAObibliotecarios;
 import com.ingsoftware.interfaces.DAOprestamo;
+import com.ingsoftware.models.bibliotecarios;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,6 +22,11 @@ public class nuevoPrestamo extends javax.swing.JPanel {
      */
     public nuevoPrestamo() {
         initComponents();
+    }
+    
+    public nuevoPrestamo(String bibliotecario){
+        initComponents();
+        jt_foliobibliotecario.setText(bibliotecario);
     }
 
     /**
@@ -45,6 +53,7 @@ public class nuevoPrestamo extends javax.swing.JPanel {
         jTB_tipoprestamo = new javax.swing.JToggleButton();
         txt_tipoPrestamo = new javax.swing.JLabel();
         btn_nuevoprestamo = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(51, 51, 51));
         setMinimumSize(new java.awt.Dimension(750, 430));
@@ -52,35 +61,48 @@ public class nuevoPrestamo extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setToolTipText("");
         jPanel1.setMinimumSize(new java.awt.Dimension(750, 430));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         titulo.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo.setText("NUEVO PRESTAMO");
+        jPanel1.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 340, -1));
 
         lb_foliolibro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lb_foliolibro.setText("FOLIO LIBRO:");
+        jPanel1.add(lb_foliolibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, 340, -1));
 
         jt_foliolibro.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel1.add(jt_foliolibro, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 70, 340, -1));
 
         lb_foliousuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lb_foliousuario.setText("FOLIO USUARIO:");
+        jPanel1.add(lb_foliousuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 340, 32));
 
         jt_foliousuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel1.add(jt_foliousuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 340, -1));
 
         lb_foliobibliotecario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lb_foliobibliotecario.setText("FOLIO BIBLIOTECARIO:");
+        lb_foliobibliotecario.setText("NOMBRE BIBLIOTECARIO:");
+        jPanel1.add(lb_foliobibliotecario, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, 340, 32));
 
+        jt_foliobibliotecario.setEditable(false);
         jt_foliobibliotecario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel1.add(jt_foliobibliotecario, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 340, -1));
 
         lb_fechaprestamo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lb_fechaprestamo.setText("FECHA PRESTAMO:");
+        jPanel1.add(lb_fechaprestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 340, 32));
 
         jt_fechaprestamo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel1.add(jt_fechaprestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 240, 340, -1));
 
         lb_fechadevolucion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lb_fechadevolucion.setText("FECHA DEVOLUCION");
+        jPanel1.add(lb_fechadevolucion, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 270, 340, 32));
 
         jt_fechadevolucion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel1.add(jt_fechadevolucion, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 300, 340, -1));
 
         jTB_tipoprestamo.setText("EN BIBLIOTECA");
         jTB_tipoprestamo.addActionListener(new java.awt.event.ActionListener() {
@@ -88,8 +110,10 @@ public class nuevoPrestamo extends javax.swing.JPanel {
                 jTB_tipoprestamoActionPerformed(evt);
             }
         });
+        jPanel1.add(jTB_tipoprestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 340, 131, 40));
 
         txt_tipoPrestamo.setText("TIPO PRESTAMO:");
+        jPanel1.add(txt_tipoPrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 340, 105, 40));
 
         btn_nuevoprestamo.setText("Añadir Prestamo");
         btn_nuevoprestamo.addActionListener(new java.awt.event.ActionListener() {
@@ -97,67 +121,10 @@ public class nuevoPrestamo extends javax.swing.JPanel {
                 btn_nuevoprestamoActionPerformed(evt);
             }
         });
+        jPanel1.add(btn_nuevoprestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 340, -1, 40));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jt_foliolibro, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lb_foliousuario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lb_foliobibliotecario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lb_fechaprestamo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lb_foliolibro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jt_foliousuario)
-                    .addComponent(jt_foliobibliotecario)
-                    .addComponent(jt_fechaprestamo)
-                    .addComponent(lb_fechadevolucion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jt_fechadevolucion))
-                .addGap(19, 19, 19))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(13, 13, 13)
-                .addComponent(txt_tipoPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTB_tipoprestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(311, 311, 311)
-                .addComponent(btn_nuevoprestamo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(66, 66, 66))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(titulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lb_foliolibro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jt_foliolibro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lb_foliousuario, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jt_foliousuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lb_foliobibliotecario, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jt_foliobibliotecario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lb_fechaprestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jt_fechaprestamo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lb_fechadevolucion, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jt_fechadevolucion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTB_tipoprestamo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txt_tipoPrestamo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_nuevoprestamo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(29, 29, 29))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecaPrestamo_2.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 10, 220, 410));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -180,9 +147,17 @@ public class nuevoPrestamo extends javax.swing.JPanel {
     }//GEN-LAST:event_jTB_tipoprestamoActionPerformed
 
     private void btn_nuevoprestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nuevoprestamoActionPerformed
-
+        bibliotecarios bib = new bibliotecarios();
+        DAObibliotecarios pres = new DAObibliotecariosImpl();
+        try {
+            bib = pres.buscarBibliotecario(jt_foliobibliotecario.getText());
+            
+        } catch (Exception ex) {
+            Logger.getLogger(nuevoPrestamo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         int libroid = Integer.parseInt(jt_foliolibro.getText());
-        int bibliotecarioid = Integer.parseInt(jt_foliobibliotecario.getText());
+        int bibliotecarioid = bib.getBibliotecarioID();
         int clienteid = Integer.parseInt(jt_foliousuario.getText());
         String fechaprestamo = jt_fechaprestamo.getText();
         String fechadevolucion = jt_fechadevolucion.getText();
@@ -206,14 +181,13 @@ public class nuevoPrestamo extends javax.swing.JPanel {
         try {
             DAOprestamo dao = new DAOprestamoImpl();
             dao.registrar(pre);
-            JOptionPane.showMessageDialog(null, "Bibliotecario agregado con exito");
+            JOptionPane.showMessageDialog(null, "Prestamo agregado con exito");
             jt_foliolibro.setText("");
-            jt_foliobibliotecario.setText("");
             jt_foliousuario.setText("");
             jt_fechaprestamo.setText("");
             jt_fechadevolucion.setText("");
         } catch (Exception e){
-            JOptionPane.showMessageDialog(null, "Hubo un error al añadir el bibliotecario");
+            JOptionPane.showMessageDialog(null, "Hubo un error al añadir el prestamo");
             System.out.println(e.getMessage());
         }
     }//GEN-LAST:event_btn_nuevoprestamoActionPerformed
@@ -221,6 +195,7 @@ public class nuevoPrestamo extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_nuevoprestamo;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JToggleButton jTB_tipoprestamo;
     private javax.swing.JTextField jt_fechadevolucion;

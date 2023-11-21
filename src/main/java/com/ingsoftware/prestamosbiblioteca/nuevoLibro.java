@@ -57,15 +57,11 @@ public class nuevoLibro extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        body = new javax.swing.JPanel();
         Title = new javax.swing.JLabel();
-        jSeparator3 = new javax.swing.JSeparator();
         Text6 = new javax.swing.JLabel();
         elnombre = new javax.swing.JTextField();
-        jSeparator7 = new javax.swing.JSeparator();
         Text7 = new javax.swing.JLabel();
         elano = new javax.swing.JTextField();
-        jSeparator8 = new javax.swing.JSeparator();
         Text8 = new javax.swing.JLabel();
         elautor = new javax.swing.JTextField();
         Text9 = new javax.swing.JLabel();
@@ -73,19 +69,20 @@ public class nuevoLibro extends javax.swing.JPanel {
         elnumcopia = new javax.swing.JTextField();
         Text10 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
-        body.setBackground(new java.awt.Color(255, 255, 255));
-        body.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Title.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        Title.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        Title.setForeground(new java.awt.Color(255, 255, 255));
         Title.setText("Registrar nuevo Libro");
+        add(Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, -1, 20));
 
-        jSeparator3.setForeground(new java.awt.Color(204, 204, 204));
-        jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jSeparator3.setPreferredSize(new java.awt.Dimension(200, 10));
-
-        Text6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Text6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        Text6.setForeground(new java.awt.Color(255, 255, 255));
         Text6.setText("Nombre");
+        add(Text6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, -1, -1));
 
         elnombre.setForeground(new java.awt.Color(102, 102, 102));
         elnombre.setText("Ingrese el Título");
@@ -100,15 +97,15 @@ public class nuevoLibro extends javax.swing.JPanel {
                 elnombreActionPerformed(evt);
             }
         });
+        add(elnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, 260, 30));
 
-        jSeparator7.setForeground(new java.awt.Color(0, 153, 255));
-        jSeparator7.setPreferredSize(new java.awt.Dimension(200, 10));
-
-        Text7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Text7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        Text7.setForeground(new java.awt.Color(255, 255, 255));
         Text7.setText("Año");
+        add(Text7, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, -1, -1));
 
         elano.setForeground(new java.awt.Color(102, 102, 102));
-        elano.setText("Ingrese la Fecha de Publicación");
+        elano.setText("Ingrese el año de Publicación");
         elano.setBorder(null);
         elano.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -120,12 +117,12 @@ public class nuevoLibro extends javax.swing.JPanel {
                 elanoActionPerformed(evt);
             }
         });
+        add(elano, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 260, 30));
 
-        jSeparator8.setForeground(new java.awt.Color(0, 153, 255));
-        jSeparator8.setPreferredSize(new java.awt.Dimension(200, 10));
-
-        Text8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Text8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        Text8.setForeground(new java.awt.Color(255, 255, 255));
         Text8.setText("Autor");
+        add(Text8, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, -1, -1));
 
         elautor.setForeground(new java.awt.Color(102, 102, 102));
         elautor.setText("Ingrese el nombre del Autor/es");
@@ -140,12 +137,15 @@ public class nuevoLibro extends javax.swing.JPanel {
                 elautorActionPerformed(evt);
             }
         });
+        add(elautor, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, 260, 30));
 
-        Text9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Text9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        Text9.setForeground(new java.awt.Color(255, 255, 255));
         Text9.setText("ISBN");
+        add(Text9, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 300, -1, -1));
 
         elISBN.setForeground(new java.awt.Color(102, 102, 102));
-        elISBN.setText("Ingrese la Categoría del Libro");
+        elISBN.setText("Ingrese el ISBN");
         elISBN.setBorder(null);
         elISBN.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -157,9 +157,10 @@ public class nuevoLibro extends javax.swing.JPanel {
                 elISBNActionPerformed(evt);
             }
         });
+        add(elISBN, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 320, 260, 30));
 
         elnumcopia.setForeground(new java.awt.Color(102, 102, 102));
-        elnumcopia.setText("Ingrese la edición");
+        elnumcopia.setText("Numero Copia Biblioteca");
         elnumcopia.setBorder(null);
         elnumcopia.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -171,105 +172,39 @@ public class nuevoLibro extends javax.swing.JPanel {
                 elnumcopiaActionPerformed(evt);
             }
         });
+        add(elnumcopia, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 140, 150, 30));
 
-        Text10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Text10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        Text10.setForeground(new java.awt.Color(255, 255, 255));
         Text10.setText("Numero Copia");
+        add(Text10, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 120, -1, -1));
 
-        jButton1.setText("REGISTRAR LIBRO");
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/book-open-page-variant.png"))); // NOI18N
+        jButton1.setText("REGISTRAR");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 210, 130, 71));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Text6)
-                    .addComponent(elnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Text7)
-                    .addComponent(elano, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 205, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Text8)
-                    .addComponent(elautor, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Text9)
-                    .addComponent(elISBN, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Text10)
-                    .addComponent(elnumcopia, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(107, 107, 107))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(271, 271, 271)
-                .addComponent(Title)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(138, 138, 138))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(body, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(30, 30, 30)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(80, 80, 80)
-                            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(0, 502, Short.MAX_VALUE)))
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 430, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Title)
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(Text8)
-                        .addGap(0, 0, 0)
-                        .addComponent(elautor, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addComponent(Text9)
-                        .addGap(0, 0, 0)
-                        .addComponent(elISBN, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addComponent(Text10)
-                        .addGap(0, 0, 0)
-                        .addComponent(elnumcopia, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(Text6)
-                        .addGap(0, 0, 0)
-                        .addComponent(elnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(Text7)
-                        .addGap(0, 0, 0)
-                        .addComponent(elano, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(48, 48, 48)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(47, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 1, Short.MAX_VALUE)
-                    .addComponent(body, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(150, 150, 150)
-                            .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(50, 50, 50)
-                            .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(20, 20, 20)
-                            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(0, 54, Short.MAX_VALUE)))
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
         );
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 430, 300));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/COMPU.jpg"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, 490));
     }// </editor-fold>//GEN-END:initComponents
 
     private void elnombreMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_elnombreMousePressed
@@ -369,15 +304,13 @@ public class nuevoLibro extends javax.swing.JPanel {
     private javax.swing.JLabel Text8;
     private javax.swing.JLabel Text9;
     private javax.swing.JLabel Title;
-    private javax.swing.JPanel body;
     private javax.swing.JTextField elISBN;
     private javax.swing.JTextField elano;
     private javax.swing.JTextField elautor;
     private javax.swing.JTextField elnombre;
     private javax.swing.JTextField elnumcopia;
     private javax.swing.JButton jButton1;
-    private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator7;
-    private javax.swing.JSeparator jSeparator8;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

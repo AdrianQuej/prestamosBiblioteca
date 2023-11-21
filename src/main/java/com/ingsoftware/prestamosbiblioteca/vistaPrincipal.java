@@ -33,6 +33,14 @@ public class vistaPrincipal extends javax.swing.JFrame {
         iniciarContenido();
         //mostrarPrincipal();
     }
+    
+    public vistaPrincipal(String usuario){
+        initComponents();
+        initStyles();
+        conseguirFecha();
+        iniciarContenido();
+        nombreBibliotecario.setText(usuario);
+    }
 
     private void initStyles(){        
         //SE DEFINEN LOS ESTILOS DEL FLATLAF        
@@ -105,6 +113,8 @@ public class vistaPrincipal extends javax.swing.JFrame {
         titulo = new javax.swing.JLabel();
         fecha = new javax.swing.JLabel();
         nombreBibliotecario = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         bienvenida = new javax.swing.JLabel();
         content = new javax.swing.JPanel();
 
@@ -121,7 +131,7 @@ public class vistaPrincipal extends javax.swing.JFrame {
 
         btn_usuarios.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         btn_usuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/account-multiple.png"))); // NOI18N
-        btn_usuarios.setText("USUARIOS");
+        btn_usuarios.setText("CLIENTES");
         btn_usuarios.setBorder(null);
         btn_usuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_usuarios.addActionListener(new java.awt.event.ActionListener() {
@@ -235,24 +245,48 @@ public class vistaPrincipal extends javax.swing.JFrame {
 
         nombreBibliotecario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         nombreBibliotecario.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        nombreBibliotecario.setText("BIBLIOTECARIO: ///////////////");
+        nombreBibliotecario.setText("///////////////");
+
+        jButton1.setText("CERRAR SESION");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setText("BIBLIOTECARIO:");
 
         javax.swing.GroupLayout encabezadoLayout = new javax.swing.GroupLayout(encabezado);
         encabezado.setLayout(encabezadoLayout);
         encabezadoLayout.setHorizontalGroup(
             encabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(fecha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(nombreBibliotecario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(encabezadoLayout.createSequentialGroup()
+                .addComponent(titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addContainerGap())
+            .addComponent(fecha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 763, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, encabezadoLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(nombreBibliotecario, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         encabezadoLayout.setVerticalGroup(
             encabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(encabezadoLayout.createSequentialGroup()
-                .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(encabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(encabezadoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addComponent(fecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(24, 24, 24)
-                .addComponent(nombreBibliotecario, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(encabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nombreBibliotecario, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         bienvenida.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -337,8 +371,14 @@ public class vistaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_reportesActionPerformed
 
     private void btn_prestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_prestamosActionPerformed
-         mostrarPanel(new nuevoPrestamo());
+         mostrarPanel(new nuevoPrestamo(nombreBibliotecario.getText()));
     }//GEN-LAST:event_btn_prestamosActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        dispose();
+        login frame1 = new login();
+        frame1.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -368,6 +408,8 @@ public class vistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel encabezado;
     private javax.swing.JLabel fecha;
     private javax.swing.JPanel fondo;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel menu;
     private javax.swing.JLabel nombreAPP;
     private javax.swing.JLabel nombreBibliotecario;

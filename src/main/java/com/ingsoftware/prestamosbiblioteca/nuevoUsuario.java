@@ -57,71 +57,40 @@ public class nuevoUsuario extends javax.swing.JPanel {
     private void initComponents() {
 
         body = new javax.swing.JPanel();
-        Title = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         Text1 = new javax.swing.JLabel();
-        Text2 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        jSeparator2 = new javax.swing.JSeparator();
-        jSeparator3 = new javax.swing.JSeparator();
-        eltelefono = new javax.swing.JTextField();
-        eldomicilio = new javax.swing.JTextField();
+        Title = new javax.swing.JLabel();
         Text3 = new javax.swing.JLabel();
         elnombre = new javax.swing.JTextField();
-        jSeparator4 = new javax.swing.JSeparator();
+        eldomicilio = new javax.swing.JTextField();
+        Text2 = new javax.swing.JLabel();
+        eltelefono = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         body.setBackground(new java.awt.Color(255, 255, 255));
         body.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        add(body, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 27, -1, -1));
 
-        Title.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        Title.setText("Registrar nuevo Usuario");
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Text1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Text1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        Text1.setForeground(new java.awt.Color(255, 255, 255));
         Text1.setText("Teléfono");
+        jPanel1.add(Text1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
 
-        Text2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Text2.setText("Domicilio");
+        Title.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        Title.setForeground(new java.awt.Color(255, 255, 255));
+        Title.setText("Registrar nuevo Usuario");
+        jPanel1.add(Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        jSeparator1.setForeground(new java.awt.Color(0, 153, 255));
-        jSeparator1.setPreferredSize(new java.awt.Dimension(200, 10));
-
-        jSeparator2.setForeground(new java.awt.Color(0, 153, 255));
-        jSeparator2.setPreferredSize(new java.awt.Dimension(200, 10));
-
-        jSeparator3.setForeground(new java.awt.Color(204, 204, 204));
-        jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jSeparator3.setPreferredSize(new java.awt.Dimension(200, 10));
-
-        eltelefono.setForeground(new java.awt.Color(102, 102, 102));
-        eltelefono.setText("Ingrese un número telefónico");
-        eltelefono.setBorder(null);
-        eltelefono.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                eltelefonoMousePressed(evt);
-            }
-        });
-        eltelefono.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                eltelefonoActionPerformed(evt);
-            }
-        });
-
-        eldomicilio.setForeground(new java.awt.Color(102, 102, 102));
-        eldomicilio.setText("Ingrese el domicilio");
-        eldomicilio.setBorder(null);
-        eldomicilio.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                eldomicilioMousePressed(evt);
-            }
-        });
-        eldomicilio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                eldomicilioActionPerformed(evt);
-            }
-        });
-
-        Text3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Text3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        Text3.setForeground(new java.awt.Color(255, 255, 255));
         Text3.setText("Nombre");
+        jPanel1.add(Text3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
 
         elnombre.setForeground(new java.awt.Color(102, 102, 102));
         elnombre.setText("Ingrese el nombre");
@@ -136,98 +105,56 @@ public class nuevoUsuario extends javax.swing.JPanel {
                 elnombreActionPerformed(evt);
             }
         });
+        jPanel1.add(elnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 260, 30));
 
-        jSeparator4.setForeground(new java.awt.Color(0, 153, 255));
-        jSeparator4.setPreferredSize(new java.awt.Dimension(200, 10));
+        eldomicilio.setForeground(new java.awt.Color(102, 102, 102));
+        eldomicilio.setText("Ingrese el domicilio");
+        eldomicilio.setBorder(null);
+        eldomicilio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                eldomicilioMousePressed(evt);
+            }
+        });
+        eldomicilio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eldomicilioActionPerformed(evt);
+            }
+        });
+        jPanel1.add(eldomicilio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 260, 30));
 
-        jButton1.setText("REGISTRAR USUARIO");
+        Text2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        Text2.setForeground(new java.awt.Color(255, 255, 255));
+        Text2.setText("Domicilio");
+        jPanel1.add(Text2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
+
+        eltelefono.setForeground(new java.awt.Color(102, 102, 102));
+        eltelefono.setText("Ingrese un número telefónico");
+        eltelefono.setBorder(null);
+        eltelefono.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                eltelefonoMousePressed(evt);
+            }
+        });
+        eltelefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eltelefonoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(eltelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 260, 30));
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/account-multiple.png"))); // NOI18N
+        jButton1.setText("REGISTRAR");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 220, 120, 47));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(23, 23, 23)
-                                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(eldomicilio, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Text1)
-                                    .addComponent(eltelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(Title)
-                                .addGap(208, 208, 208)))
-                        .addGap(40, 40, 40))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(Text2)
-                        .addContainerGap(645, Short.MAX_VALUE))))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(body, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(30, 30, 30)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(Text3)
-                                .addComponent(elnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(80, 80, 80)
-                            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(0, 360, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Title)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                .addComponent(Text1)
-                .addGap(10, 10, 10)
-                .addComponent(eltelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(Text2)
-                .addGap(16, 16, 16)
-                .addComponent(eldomicilio, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(87, 87, 87))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(body, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(60, 60, 60)
-                            .addComponent(Text3)
-                            .addGap(10, 10, 10)
-                            .addComponent(elnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(0, 0, 0)
-                            .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(20, 20, 20)
-                            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 430, 300));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/COMPU.jpg"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, 490));
     }// </editor-fold>//GEN-END:initComponents
 
     private void eltelefonoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eltelefonoMousePressed
@@ -308,9 +235,7 @@ public class nuevoUsuario extends javax.swing.JPanel {
     private javax.swing.JTextField elnombre;
     private javax.swing.JTextField eltelefono;
     private javax.swing.JButton jButton1;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

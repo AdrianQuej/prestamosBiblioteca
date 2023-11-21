@@ -97,7 +97,7 @@ public class DAOlibrosImpl extends Database implements DAOlibros {
                 lib.setAutor(rs.getString("autor"));
                 lib.setISBN(rs.getString("ISBN"));
                 lib.setAno(rs.getInt("ano"));
-                lib.setAno(rs.getInt("Num_copia"));
+                lib.setNum_copia(rs.getInt("Num_copia"));
                 lista.add(lib);
             }
             rs.close();

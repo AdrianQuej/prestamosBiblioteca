@@ -16,7 +16,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
-        <exec.mainClass>com.ingsoftware.prestamosbiblioteca.vistaPrincipal</exec.mainClass>
+        <exec.mainClass>com.ingsoftware.prestamosbiblioteca.login</exec.mainClass>
     </properties>
     <dependencies>
         <dependency>

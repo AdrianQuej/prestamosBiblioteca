@@ -16,4 +16,7 @@ public interface DAObibliotecarios {
     public void modificar(bibliotecarios bib) throws Exception;
     public void eliminar(bibliotecarios bib) throws Exception;
     public List<bibliotecarios> listar() throws Exception;
+    public boolean getLoginBib(String usuario, String contrasena) throws Exception;
+    public bibliotecarios buscarBibliotecario(String usuario) throws Exception;
+    
 }

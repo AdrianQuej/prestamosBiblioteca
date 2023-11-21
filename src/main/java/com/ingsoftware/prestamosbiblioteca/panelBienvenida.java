@@ -20,19 +20,25 @@ public class panelBienvenida extends javax.swing.JPanel {
         initStyles();
     }
 private void initStyles(){        
-        //SE DEFINEN LOS ESTILOS DEL FLATLAF        
-        r1.putClientProperty( "FlatLaf.style", "font: 135% $monospaced.font" );
-        jLabel1.putClientProperty( "FlatLaf.style", "font: 135% $monospaced.font" );        
-        r2.putClientProperty( "FlatLaf.style", "font: 120% $monospaced.font" );        
-        r3.putClientProperty( "FlatLaf.style", "font: 135% $monospaced.font" );
+        //SE DEFINEN LOS ESTILOS DEL FLATLAF      
+        r1.putClientProperty( "FlatLaf.style", "font:80% $h1.font" );
+        r24.putClientProperty( "FlatLaf.style", "font:80% $h1.font" );
+        r26.putClientProperty( "FlatLaf.style", "font:80% $h1.font" );
+        r25.putClientProperty( "FlatLaf.style", "font:80% $h1.font" );
+        r23.putClientProperty( "FlatLaf.style", "font:80% $h1.font" );
+        r3.putClientProperty( "FlatLaf.style", "font:80% $h1.font" );
+        r2.putClientProperty( "FlatLaf.style", "font:80% $h1.font" );
         
         
         //SE CAMBIA EL COLOR DE LOS ESTILOS
         REGLAS.setForeground(Color.black);
-        jLabel1.setForeground(Color.black);
         r1.setForeground(Color.black);
-        r2.setForeground(Color.black);
-        r3.setForeground(Color.black);        
+        r24.setForeground(Color.black);
+        r26.setForeground(Color.black);
+        r25.setForeground(Color.black);      
+        r23.setForeground(Color.black); 
+        r3.setForeground(Color.black); 
+        r2.setForeground(Color.black); 
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -48,7 +54,11 @@ private void initStyles(){
         r1 = new javax.swing.JLabel();
         r2 = new javax.swing.JLabel();
         r3 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        r23 = new javax.swing.JLabel();
+        r24 = new javax.swing.JLabel();
+        r25 = new javax.swing.JLabel();
+        r26 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 204, 204));
         setMaximumSize(new java.awt.Dimension(750, 430));
@@ -56,62 +66,50 @@ private void initStyles(){
         setPreferredSize(new java.awt.Dimension(750, 430));
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         REGLAS.setFont(new java.awt.Font("NewsGoth BT", 1, 18)); // NOI18N
         REGLAS.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         REGLAS.setText("REGLAS DE LA BIBLIOTECA");
+        jPanel2.add(REGLAS, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 757, -1));
 
         r1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         r1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        r1.setText("1 - CONSERVAR LOS LIBROS EN BUEN ESTADO Y REVISAR SU ESTADO ANTES");
+        r1.setText("1 - CONSERVAR LOS LIBROS EN BUEN ESTADO ");
+        jPanel2.add(r1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 440, -1));
 
         r2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         r2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        r2.setText("2 -  NO SE PERMITE PRESTAMOS A DOMICILIO EN LIBROS CON MENOS DE 3 UNIDADES EN EXISTENCIA");
+        r2.setText("2 -  NO SE PERMITE PRESTAMOS A DOMICILIO EN ");
+        jPanel2.add(r2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 470, -1));
 
         r3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         r3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        r3.setText(" 3 - DEVOLVER LOS LIBROS EN LA FECHA ACORDADA PARA EVITAR CONFLICTOS");
+        r3.setText(" 3 - DEVOLVER LOS LIBROS EN LA FECHA ACORDADA ");
+        jPanel2.add(r3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 490, -1));
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel1.setText("DEL PRESTAMO.");
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/libros_1.png"))); // NOI18N
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 90, 269, 270));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(REGLAS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(r1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(r3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(r2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                .addGap(19, 19, 19)))))
-                .addContainerGap())
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(REGLAS, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(r1, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(33, 33, 33)
-                .addComponent(r2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(43, 43, 43)
-                .addComponent(r3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(187, 187, 187))
-        );
+        r23.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        r23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        r23.setText("PARA EVITAR CONFLICTOS");
+        jPanel2.add(r23, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, -1, -1));
+
+        r24.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        r24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        r24.setText("EXISTENCIA");
+        jPanel2.add(r24, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, -1, -1));
+
+        r25.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        r25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        r25.setText("LIBROS CON MENOS DE 3 UNIDADES EN");
+        jPanel2.add(r25, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
+
+        r26.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        r26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        r26.setText("Y REVISAR SU ESTADO ANTES DEL PRESTAMO");
+        jPanel2.add(r26, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -130,10 +128,14 @@ private void initStyles(){
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel REGLAS;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel r1;
     private javax.swing.JLabel r2;
+    private javax.swing.JLabel r23;
+    private javax.swing.JLabel r24;
+    private javax.swing.JLabel r25;
+    private javax.swing.JLabel r26;
     private javax.swing.JLabel r3;
     // End of variables declaration//GEN-END:variables
 }

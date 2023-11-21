@@ -29,41 +29,40 @@ public class nuevoBibliotecario extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
         body = new javax.swing.JPanel();
         Title = new javax.swing.JLabel();
         Text1 = new javax.swing.JLabel();
         Text2 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        jSeparator2 = new javax.swing.JSeparator();
-        jSeparator3 = new javax.swing.JSeparator();
         nombretxt = new javax.swing.JTextField();
         Text3 = new javax.swing.JLabel();
         name = new javax.swing.JTextField();
-        jSeparator4 = new javax.swing.JSeparator();
         jButton1 = new javax.swing.JButton();
         lacontrasena = new javax.swing.JPasswordField();
+        jLabel2 = new javax.swing.JLabel();
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/COMPU.jpg"))); // NOI18N
+
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         body.setBackground(new java.awt.Color(255, 255, 255));
         body.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        add(body, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 27, -1, -1));
 
         Title.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        Title.setForeground(new java.awt.Color(255, 255, 255));
         Title.setText("Registrar nuevo Bibliotecario");
+        add(Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, -1, -1));
 
-        Text1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Text1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        Text1.setForeground(new java.awt.Color(255, 255, 255));
         Text1.setText("Contraseña");
+        add(Text1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, -1, -1));
 
-        Text2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Text2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        Text2.setForeground(new java.awt.Color(255, 255, 255));
         Text2.setText("Nombre");
-
-        jSeparator1.setForeground(new java.awt.Color(0, 153, 255));
-        jSeparator1.setPreferredSize(new java.awt.Dimension(200, 10));
-
-        jSeparator2.setForeground(new java.awt.Color(0, 153, 255));
-        jSeparator2.setPreferredSize(new java.awt.Dimension(200, 10));
-
-        jSeparator3.setForeground(new java.awt.Color(204, 204, 204));
-        jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jSeparator3.setPreferredSize(new java.awt.Dimension(200, 10));
+        add(Text2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 160, -1, 18));
 
         nombretxt.setForeground(new java.awt.Color(102, 102, 102));
         nombretxt.setText("Ingrese el nombre completo");
@@ -78,9 +77,12 @@ public class nuevoBibliotecario extends javax.swing.JPanel {
                 nombretxtActionPerformed(evt);
             }
         });
+        add(nombretxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, 260, 30));
 
-        Text3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Text3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        Text3.setForeground(new java.awt.Color(255, 255, 255));
         Text3.setText("Usuario");
+        add(Text3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, -1, -1));
 
         name.setForeground(new java.awt.Color(102, 102, 102));
         name.setText("Ingrese un nombre de usuario");
@@ -95,9 +97,7 @@ public class nuevoBibliotecario extends javax.swing.JPanel {
                 nameActionPerformed(evt);
             }
         });
-
-        jSeparator4.setForeground(new java.awt.Color(0, 153, 255));
-        jSeparator4.setPreferredSize(new java.awt.Dimension(200, 10));
+        add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 260, 30));
 
         jButton1.setText("REGISTRAR USUARIO");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -105,6 +105,7 @@ public class nuevoBibliotecario extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 300, 160, 30));
 
         lacontrasena.setText("jPasswordField1");
         lacontrasena.addActionListener(new java.awt.event.ActionListener() {
@@ -112,88 +113,10 @@ public class nuevoBibliotecario extends javax.swing.JPanel {
                 lacontrasenaActionPerformed(evt);
             }
         });
+        add(lacontrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, 260, 30));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(23, 23, 23)
-                                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(nombretxt, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 118, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(Text1)
-                                    .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lacontrasena)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(Title)
-                                .addGap(208, 208, 208)))
-                        .addGap(40, 40, 40))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(Text2)
-                        .addContainerGap(651, Short.MAX_VALUE))))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(body, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(30, 30, 30)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(Text3)
-                                .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(80, 80, 80)
-                            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(0, 360, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Title)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addComponent(Text1)
-                .addGap(4, 4, 4)
-                .addComponent(lacontrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49)
-                .addComponent(Text2, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(nombretxt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(87, 87, 87))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(body, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(60, 60, 60)
-                            .addComponent(Text3)
-                            .addGap(10, 10, 10)
-                            .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(0, 0, 0)
-                            .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(20, 20, 20)
-                            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/COMPU.jpg"))); // NOI18N
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 430));
     }// </editor-fold>//GEN-END:initComponents
 
     private void nombretxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombretxtMousePressed
@@ -259,10 +182,8 @@ public class nuevoBibliotecario extends javax.swing.JPanel {
     private javax.swing.JLabel Title;
     private javax.swing.JPanel body;
     private javax.swing.JButton jButton1;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPasswordField lacontrasena;
     private javax.swing.JTextField name;
     private javax.swing.JTextField nombretxt;
